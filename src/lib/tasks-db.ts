@@ -46,7 +46,7 @@ export async function getDB(): Promise<TasksDB> {
   }
 
   // Remove legacy hardcoded EOD tasks
-  db.tasks = db.tasks.filter((t) => (t as Task & { category: string }).category !== "eod");
+  db.tasks = db.tasks.filter((t) => (t as unknown as { category: string }).category !== "eod");
 
   if (db.date !== today) {
     // Morning tasks: keep them, just reset done status
