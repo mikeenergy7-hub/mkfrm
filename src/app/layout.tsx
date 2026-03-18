@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import Providers from "@/components/providers";
+import LogoutButton from "@/components/logout-button";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -57,31 +58,34 @@ export default function RootLayout({
             </span>
           </div>
 
-          {/* Nav */}
-          <nav style={{ display: "flex", alignItems: "center", gap: 2 }}>
-            {[
-              { href: "/",      label: "Dashboard"   },
-              { href: "/pnl",   label: "PnL Tracker" },
-              { href: "/tasks", label: "Team Board"  },
-            ].map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  padding: "6px 14px",
-                  fontSize: 12,
-                  fontWeight: 500,
-                  color: "#8c8780",
-                  textDecoration: "none",
-                  letterSpacing: "0.03em",
-                  borderRadius: 6,
-                  transition: "color 0.15s",
-                }}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
+          {/* Nav + Logout */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <nav style={{ display: "flex", alignItems: "center", gap: 2 }}>
+              {[
+                { href: "/",      label: "Dashboard"   },
+                { href: "/pnl",   label: "PnL Tracker" },
+                { href: "/tasks", label: "Team Board"  },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  style={{
+                    padding: "6px 14px",
+                    fontSize: 12,
+                    fontWeight: 500,
+                    color: "#8c8780",
+                    textDecoration: "none",
+                    letterSpacing: "0.03em",
+                    borderRadius: 6,
+                    transition: "color 0.15s",
+                  }}
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+            <LogoutButton />
+          </div>
         </header>
 
         <main style={{ minHeight: "calc(100vh - 48px)" }}>
