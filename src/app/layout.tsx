@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Providers>
         <header style={{
           display: "flex",
           alignItems: "center",
@@ -89,8 +90,9 @@ export default function RootLayout({
         </header>
 
         <main style={{ minHeight: "calc(100vh - 48px)" }}>
-          <Providers>{children}</Providers>
+          {children}
         </main>
+        </Providers>
       </body>
     </html>
   );
